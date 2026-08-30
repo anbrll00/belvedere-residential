@@ -63,10 +63,13 @@
 
 <!--
   DEV NOTE (remove before launch):
-  - Email below is still a PLACEHOLDER. Swap it for real info before
-    this goes live. Phone, owner name (Brian), service area (Preble &
-    Montgomery Counties OH / Wayne & Union Counties IN), and all three
-    testimonials (Chelcie, Carole, Greg) are real.
+  - Phone, email (mcculloughbrian91@gmail.com — using personal email
+    temporarily until belvedereresidential.com Workspace mail is fully
+    working; swap to brian@belvedereresidential.com once it is), owner
+    name (Brian),
+    service area (Preble & Montgomery Counties OH / Wayne & Union
+    Counties IN), and all three testimonials (Chelcie, Carole, Greg)
+    are all real. No placeholder contact info remains.
   - Cleaning & handyman prices are regional market-research ESTIMATES
     (compiled Aug 2026), shown intentionally so visitors have a number
     to anchor on — not confirmed final rates, so sanity-check before
@@ -76,9 +79,11 @@
   - Do NOT add "Licensed & Insured" / "Background-checked" claims unless
     they're actually true and verifiable — false claims here are a legal risk.
   - SEO: canonical/OG/Twitter/JSON-LD tags, sitemap.xml, and robots.txt
-    all point at belvedereresidential.com (CNAME file added for GitHub
-    Pages custom domain). DNS still needs to be pointed at GitHub Pages
-    before this domain actually resolves — see chat for the exact records.
+    all point at belvedereresidential.com. DNS is live via Namecheap
+    (GitHub Pages A/CNAME records) with a CNAME file in the repo.
+  - Contact form (id="quoteForm") is not yet wired to send email —
+    still shows a placeholder alert on submit (see script.js). Needs a
+    form backend (e.g. Web3Forms/Formspree) pointed at Brian's email.
   - All 5 gallery photos + hero are now real photos of Brian's own jobs
     (shower, 2 bedrooms, bathtub, toilet, drywall/plumbing access repair).
     No AI-generated or stock photos remain on the site.
@@ -478,7 +483,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
         <div>
           <div class="label">Email</div>
-          <div class="value placeholder">hello@belvedere.example &mdash; placeholder</div>
+          <div class="value"><a href="mailto:mcculloughbrian91@gmail.com">mcculloughbrian91@gmail.com</a></div>
         </div>
       </div>
       <div class="contact-detail">
@@ -548,14 +553,13 @@
           <h4>Contact</h4>
           <ul>
             <li><a href="tel:+19376835340">(937) 683-5340</a></li>
-            <li><a href="mailto:hello@belvedere.example">hello@belvedere.example</a></li>
+            <li><a href="mailto:mcculloughbrian91@gmail.com">mcculloughbrian91@gmail.com</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Belvedere Residential Services. All rights reserved.</span>
-      <span>Email &amp; service area shown are placeholders.</span>
     </div>
   </div>
 </footer>
