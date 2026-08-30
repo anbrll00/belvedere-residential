@@ -780,6 +780,14 @@ section { padding: 96px 0; }
   color: var(--ink-soft);
   margin-top: 14px;
 }
+.form-status {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 14px;
+  min-height: 1.2em;
+}
+.form-status-success { color: var(--green-dark); }
+.form-status-error { color: #B3423A; }
 
 /* ---------- Footer ---------- */
 footer {

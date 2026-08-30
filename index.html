@@ -57,7 +57,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="styles.css?v=14">
+<link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
 
@@ -81,9 +81,12 @@
   - SEO: canonical/OG/Twitter/JSON-LD tags, sitemap.xml, and robots.txt
     all point at belvedereresidential.com. DNS is live via Namecheap
     (GitHub Pages A/CNAME records) with a CNAME file in the repo.
-  - Contact form (id="quoteForm") is not yet wired to send email —
-    still shows a placeholder alert on submit (see script.js). Needs a
-    form backend (e.g. Web3Forms/Formspree) pointed at Brian's email.
+  - Contact form (id="quoteForm") is wired to Web3Forms and submits via
+    fetch (see script.js) — sends to mcculloughbrian91@gmail.com (personal
+    email, temporary — the access key at web3forms.com is tied to that
+    address; regenerate a new key there and swap it in the form's hidden
+    access_key field once Workspace mail is working, to send to
+    brian@belvedereresidential.com instead).
   - All 5 gallery photos + hero are now real photos of Brian's own jobs
     (shower, 2 bedrooms, bathtub, toilet, drywall/plumbing access repair).
     No AI-generated or stock photos remain on the site.
@@ -496,6 +499,9 @@
     </div>
 
     <form class="form-card" id="quoteForm">
+      <input type="hidden" name="access_key" value="1a6b5f12-6a83-47b9-9fdc-da403aacc62f">
+      <input type="hidden" name="subject" value="New quote request — Belvedere Residential Services">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
       <div class="form-two">
         <div class="form-row">
           <label for="fname">Full name</label>
@@ -523,8 +529,8 @@
         <label for="fmessage">Tell us a bit more</label>
         <textarea id="fmessage" name="fmessage" rows="4" placeholder="e.g. 3-bedroom house, kitchen deep clean plus a leaky faucet"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Request my quote</button>
-      <p class="form-note">This form isn't wired up to send anywhere yet &mdash; connect it to an email service or backend before launch.</p>
+      <button type="submit" class="btn btn-primary" id="quoteSubmit" style="width:100%; justify-content:center;">Request my quote</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>
@@ -564,6 +570,6 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>
 </body>
 </html>

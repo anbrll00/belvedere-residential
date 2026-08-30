@@ -52,12 +52,42 @@
   });
 })();
 
-// Quote form (no backend wired up yet)
+// Quote form — submits to Web3Forms (https://web3forms.com), no backend needed
 (function () {
   const form = document.getElementById('quoteForm');
-  if (!form) return;
-  form.addEventListener('submit', (e) => {
+  const submitBtn = document.getElementById('quoteSubmit');
+  const status = document.getElementById('formStatus');
+  if (!form || !submitBtn || !status) return;
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    alert('This form is a placeholder — hook it up to an email service or backend before launch.');
+    status.textContent = '';
+    status.classList.remove('form-status-error', 'form-status-success');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      });
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        form.reset();
+        status.textContent = "Thanks — we'll follow up with a quote soon.";
+        status.classList.add('form-status-success');
+        submitBtn.textContent = 'Request my quote';
+      } else {
+        throw new Error(result.message || 'Something went wrong.');
+      }
+    } catch (err) {
+      status.textContent = "Couldn't send that — please call or email us directly.";
+      status.classList.add('form-status-error');
+      submitBtn.textContent = 'Request my quote';
+    } finally {
+      submitBtn.disabled = false;
+    }
   });
 })();
