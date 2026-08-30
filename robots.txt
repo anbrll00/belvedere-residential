@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://anbrll00.github.io/belvedere-residential/sitemap.xml
+Sitemap: https://www.belvedereresidential.com/sitemap.xml
